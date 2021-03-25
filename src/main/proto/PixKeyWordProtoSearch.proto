@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "br.com.zup";
+option java_outer_classname = "PixKeywordSearch";
+option objc_class_prefix = "HLW";
+package br.com.zup;
+import "google/protobuf/timestamp.proto";
+
+service PixKeyWordSarchService {
+  rpc findByCpf (PixSearchRequest) returns (PixSearchResponse) {}
+  rpc findByEmail (PixSearchRequest) returns (PixSearchResponse) {}
+  rpc findByPhone (PixSearchRequest) returns (PixSearchResponse) {}
+  rpc findByRamdom (PixSearchRequest) returns (PixSearchResponse) {}
+}
+
+
+
+message PixSearchRequest {
+  message FilterPixById {
+    string clientId =1;
+    string pixId  =2;
+  }
+  oneof Filter {
+    FilterPixById pixId = 1;
+    string keyword =2;
+  }
+
+}
+
+message  PixSearchResponse {
+
+  enum AccountType {
+    CCA = 0 ;
+    SVGS = 1 ;
+  }
+
+  enum KeyType {
+    CPF = 0 ;
+    CHAVE_ALEATORIA = 1 ;
+    CELULAR=2;
+    EMAIL=3;
+  }
+
+  message  AccountBank {
+    AccountType accountType =1;
+    KeyType keyType = 2;
+    string intitute = 3;
+    string name =4;
+    string cpf = 5;
+    string agency =  6;
+    string numberAccount  =7 ;
+    google.protobuf.Timestamp createAt = 8;
+  }
+  AccountBank account = 1;
+
+
+}

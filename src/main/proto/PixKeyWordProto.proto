@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "br.com.zup";
+option java_outer_classname = "PixKeyword";
+option objc_class_prefix = "HLW";
+
+package br.com.zup;
+
+service PixKeyWordService {
+  rpc ramdomKeyWordRegister (PixRamdomKeyWordRequest) returns (PixRamdomKeyWordResponse) {}
+  rpc ramdomKeyWordRemove   (PixRamdomKeyWordDeleteRequest) returns (PixRamdomKeyWordDeleteResponse) {}
+  rpc cpfKeyWordRegister   (PixCpfWordRequest) returns (PixCpfWordResponse) {}
+  rpc cpfKeyWordRemove     (PixCpfWordRequest) returns (PixCpfWordResponse) {}
+  rpc phoneKeyWordRegister (PixPhoneKeyWordRequest) returns (PixPhoneKeyWordResponse) {}
+  rpc phoneKeyWordRemove   (PixPhoneKeyWordRequest) returns (PixPhoneKeyWordResponse) {}
+  rpc emailKeyWordRegister (PixEmailKeyWordRequest) returns (PixEmailKeyWordResponse) {}
+  rpc emailKeyWordRemove   (PixEmailKeyWordRequest) returns (PixEmailKeyWordResponse) {}
+}
+
+enum TypeAccount {
+  ACCOUNT_CURRENT= 0;
+  ACCOUNT_DEPOSIT=1;
+
+}
+
+message PixRamdomKeyWordRequest {
+  string idInternal = 1;
+  TypeAccount type = 2;
+}
+message PixRamdomKeyWordResponse {
+  string message = 1;
+}
+message PixRamdomKeyWordDeleteRequest {
+   string keyWord  = 1;
+}
+
+message  PixRamdomKeyWordDeleteResponse {
+  string message = 1;
+}
+
+
+
+message PixCpfWordRequest {
+  string cpfKeyWord = 1;
+  string idInternal = 2;
+  TypeAccount type = 3;
+}
+message PixCpfWordResponse {
+  string message = 1;
+}
+message PixPhoneKeyWordRequest {
+  string phoneKeyWord = 1;
+  string idInternal = 2;
+  TypeAccount type = 3;
+}
+
+message PixPhoneKeyWordResponse {
+  string message =1;
+}
+
+message PixEmailKeyWordRequest {
+  string emailKeyWord = 1;
+  string idInternal = 2;
+  TypeAccount type = 3;
+}
+
+message PixEmailKeyWordResponse {
+  string message =1;
+}
