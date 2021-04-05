@@ -6,7 +6,6 @@ import java.lang.System;
 @io.micronaut.core.annotation.Introspected()
 public final class RegisterPixCpfFormRequest {
     @org.jetbrains.annotations.NotNull()
-    @br.com.zup.core.shared.ValidPixCpf()
     @javax.validation.constraints.NotBlank(message = "informe uma mensagem.")
     private final java.lang.String key = null;
     

@@ -6,7 +6,7 @@ import io.micronaut.core.annotation.Introspected
 import javax.validation.constraints.NotBlank
 
 @Introspected
-class RegisterPixCpfFormRequest (@field:NotBlank(message = "informe uma mensagem.") @field:ValidPixCpf val key:String){
+class RegisterPixCpfFormRequest (@field:NotBlank(message = "informe uma mensagem.") val key:String){
     fun toModel(internal:String): PixCpfWordRequest? {
         return PixCpfWordRequest.newBuilder()
             .setCpfKeyWord(key)
