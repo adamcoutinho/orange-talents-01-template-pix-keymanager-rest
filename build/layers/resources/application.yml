@@ -1,0 +1,17 @@
+micronaut:
+  application:
+    name: apiPix
+router:
+  static-resources:
+       swagger:
+         paths: classpath:META-INF/swagger
+         mapping: /swagger/**
+grpc:
+  client:
+    plaintext: true
+    max-retry-attempts: 10
+  channels:
+    pixKeywordManager:
+      address: '${KEY_MANAGER_HOST:localhost}:${KEY_MANAGER_PORT:50051}'
+swagger-ui:
+    enabled: true

@@ -1,0 +1,143 @@
+openapi: 3.0.1
+info:
+  title: api-pix
+  version: "1.0"
+paths:
+  /client/{client-id}:
+    get:
+      operationId: findByClientId
+      parameters:
+      - name: client-id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: findByClientId 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+  /pix/{client-id}/{account-type}:
+    post:
+      operationId: createPixRamdom
+      parameters:
+      - name: client-id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: account-type
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        "200":
+          description: createPixRamdom 200 response
+  /pix/{client-id}/{account-type}/cpf:
+    post:
+      operationId: createPixCpf
+      parameters:
+      - name: client-id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: account-type
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - request
+              type: object
+              properties:
+                request:
+                  $ref: '#/components/schemas/RegisterPixCpfFormRequest'
+        required: true
+      responses:
+        "200":
+          description: createPixCpf 200 response
+  /pix/{client-id}/{account-type}/email:
+    post:
+      operationId: createPixEmail
+      parameters:
+      - name: client-id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: account-type
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterPixEmailFormRequest'
+        required: true
+      responses:
+        "200":
+          description: createPixEmail 200 response
+  /pix/{client-id}/{account-type}/phone:
+    post:
+      operationId: createPixPhone
+      parameters:
+      - name: client-id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: account-type
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterPixPhoneFormRequest'
+        required: true
+      responses:
+        "200":
+          description: createPixPhone 200 response
+components:
+  schemas:
+    Object:
+      type: object
+    RegisterPixCpfFormRequest:
+      required:
+      - key
+      type: object
+      properties:
+        key:
+          minLength: 1
+          type: string
+    RegisterPixEmailFormRequest:
+      required:
+      - keyword
+      type: object
+      properties:
+        keyword:
+          type: string
+    RegisterPixPhoneFormRequest:
+      type: object

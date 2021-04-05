@@ -1,0 +1,8 @@
+br.com.zup.core.client.$FactoryStub$PixKeyWordSarchService2DefinitionClass
+br.com.zup.core.endpoints.findpixclient.$FindPixClientEndPointDefinitionClass
+br.com.zup.core.client.$FactoryStub$FindAllPixKeyGrpcService1DefinitionClass
+br.com.zup.core.client.$FactoryStub$PixKeyOperationGrpcService0DefinitionClass
+br.com.zup.core.endpoints.registerpix.$RegisterPixEndPointDefinitionClass
+br.com.zup.core.client.$FactoryStubDefinitionClass
+br.com.zup.core.endpoints.searchpix.$SearchPixDefinitionClass
+br.com.zup.core.endpoints.registerpix.$$RegisterPixEndPointDefinition$InterceptedDefinitionClass

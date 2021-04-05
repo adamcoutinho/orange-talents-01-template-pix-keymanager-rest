@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "br.com.zup";
+option java_outer_classname = "FindAllPixKey";
+option objc_class_prefix = "HLW";
+package br.com.zup;
+import "google/protobuf/timestamp.proto";
+
+service FindAllPixKeyService {
+  rpc findAll (SearchRequest) returns (SearchResponse) {}
+}
+
+
+
+message SearchRequest {
+ string clientId = 1;
+
+}
+
+message  SearchResponse {
+  message  ClientPix {
+    enum KeyType {
+      CPF = 0 ;
+      CHAVE_ALEATORIA = 1 ;
+      CELULAR=2;
+      EMAIL=3;
+    }
+    string pixId = 1;
+    string clientId = 2;
+    KeyType keyType = 3;
+    string key = 4;
+    string accountType = 5;
+    google.protobuf.Timestamp createAt = 6;
+  }
+  repeated ClientPix clientPix = 1;
+
+}
