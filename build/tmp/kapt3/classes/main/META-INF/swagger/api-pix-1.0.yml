@@ -19,7 +19,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Object'
-  /pix/{client-id}/{account-type}:
+  /pix/{client-id}:
     post:
       operationId: createPixRamdom
       parameters:
@@ -28,12 +28,6 @@ paths:
         required: true
         schema:
           type: string
-      - name: account-type
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int32
       requestBody:
         content:
           application/json:
@@ -43,7 +37,7 @@ paths:
       responses:
         "200":
           description: createPixRamdom 200 response
-  /pix/{client-id}/{account-type}/cpf:
+  /pix/{client-id}/cpf:
     post:
       operationId: createPixCpf
       parameters:
@@ -52,12 +46,6 @@ paths:
         required: true
         schema:
           type: string
-      - name: account-type
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int32
       requestBody:
         content:
           application/json:
@@ -72,7 +60,7 @@ paths:
       responses:
         "200":
           description: createPixCpf 200 response
-  /pix/{client-id}/{account-type}/email:
+  /pix/{client-id}/email:
     post:
       operationId: createPixEmail
       parameters:
@@ -81,12 +69,6 @@ paths:
         required: true
         schema:
           type: string
-      - name: account-type
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int32
       requestBody:
         content:
           application/json:
@@ -96,7 +78,7 @@ paths:
       responses:
         "200":
           description: createPixEmail 200 response
-  /pix/{client-id}/{account-type}/phone:
+  /pix/{client-id}/phone:
     post:
       operationId: createPixPhone
       parameters:
@@ -105,12 +87,6 @@ paths:
         required: true
         schema:
           type: string
-      - name: account-type
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int32
       requestBody:
         content:
           application/json:
@@ -134,10 +110,17 @@ components:
           type: string
     RegisterPixEmailFormRequest:
       required:
-      - keyword
+      - emailKeyWord
       type: object
       properties:
-        keyword:
+        emailKeyWord:
+          minLength: 1
           type: string
+          format: email
     RegisterPixPhoneFormRequest:
+      required:
+      - phoneKeyWord
       type: object
+      properties:
+        phoneKeyWord:
+          type: string

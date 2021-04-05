@@ -7,10 +7,10 @@ import javax.validation.constraints.NotBlank
 
 
 @Introspected
-class RegisterPixEmailFormRequest (@field:NotBlank(message = "preencha o email.") @field:Email(message = "informe um email valido.") val keyword:String){
+class RegisterPixEmailFormRequest (@field:NotBlank(message = "preencha o email.") @field:Email(message = "informe um email valido.") val emailKeyWord:String){
     fun toModel(internal:String): PixEmailKeyWordRequest? {
         return PixEmailKeyWordRequest.newBuilder()
-            .setEmailKeyWord(keyword)
+            .setEmailKeyWord(emailKeyWord)
             .setIdInternal(internal)
             .build()
     }

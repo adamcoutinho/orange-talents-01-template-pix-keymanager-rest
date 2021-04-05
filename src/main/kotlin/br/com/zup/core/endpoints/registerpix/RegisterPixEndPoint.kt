@@ -1,5 +1,6 @@
 package br.com.zup.core.endpoints.registerpix
 
+import br.com.zup.PixRamdomKeyWordRequest
 import br.com.zup.core.client.FactoryStub
 import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller
@@ -16,41 +17,37 @@ class RegisterPixEndPoint() {
     @Inject
     lateinit var factoryStub: FactoryStub
 
-    @Post("/{client-id}/{account-type}/cpf")
+    @Post("/{client-id}/cpf")
     fun createPixCpf(
 
         @PathVariable("client-id") clientId: String,
-        @PathVariable("account-type") accountType: Int,
-        @Valid  request:RegisterPixCpfFormRequest
+        @Valid request: RegisterPixCpfFormRequest,
     ) {
 
         this.factoryStub.pixKeyOperationGrpcService().cpfKeyWordRegister(request.toModel(internal = clientId))
 
     }
 
-    @Post("/{client-id}/{account-type}/email")
+    @Post("/{client-id}/email")
     fun createPixEmail(
         @PathVariable("client-id") clientId: String,
-        @PathVariable("account-type") accountType: Int,
-        @Valid @Body request:RegisterPixEmailFormRequest
+        @Valid @Body request: RegisterPixEmailFormRequest,
     ) {
         this.factoryStub.pixKeyOperationGrpcService().emailKeyWordRegister(request.toModel(internal = clientId))
     }
 
-    @Post("/{client-id}/{account-type}/phone")
+    @Post("/{client-id}/phone")
     fun createPixPhone(
         @PathVariable("client-id") clientId: String,
-        @PathVariable("account-type") accountType: Int,
-        @Valid @Body request:RegisterPixPhoneFormRequest
+        @Valid @Body request: RegisterPixPhoneFormRequest,
     ) {
-
+        this.factoryStub.pixKeyOperationGrpcService().phoneKeyWordRegister(request.toModel(internal = clientId))
     }
 
-    @Post("/{client-id}/{account-type}")
+    @Post("/{client-id}")
     fun createPixRamdom(
-        @PathVariable("client-id") clientId: String,
-        @PathVariable("account-type") accountType: Int
-    , request:RegisterPixRandomFormRequest) {
-        this.factoryStub.pixKeyOperationGrpcService().ramdomKeyWordRegister(request.toModel(internal = clientId))
+        @PathVariable("client-id") clientId: String
+    ) {
+        this.factoryStub.pixKeyOperationGrpcService().ramdomKeyWordRegister(PixRamdomKeyWordRequest.newBuilder().setIdInternal(clientId).build())
     }
 }
