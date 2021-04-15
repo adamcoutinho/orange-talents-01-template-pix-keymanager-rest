@@ -24,7 +24,7 @@ class RegisterPixEndPoint() {
         @Valid request: RegisterPixCpfFormRequest,
     ) {
 
-        this.factoryStub.pixKeyOperationGrpcService().cpfKeyWordRegister(request.toModel(internal = clientId))
+     this.factoryStub.pixKeyOperationGrpcService().cpfKeyWordRegister(request.toModel(internal = clientId))
 
     }
 
@@ -48,6 +48,8 @@ class RegisterPixEndPoint() {
     fun createPixRamdom(
         @PathVariable("client-id") clientId: String
     ) {
+
         this.factoryStub.pixKeyOperationGrpcService().ramdomKeyWordRegister(PixRamdomKeyWordRequest.newBuilder().setIdInternal(clientId).build())
+
     }
 }
